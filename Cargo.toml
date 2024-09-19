@@ -1,0 +1,37 @@
+[package]
+name = "iam_polp"
+version = "0.1.0"
+edition = "2021"
+
+# Starting in Rust 1.62 you can use `cargo add` to add dependencies
+# to your project.
+#
+# If you're using an older Rust version,
+# download cargo-edit(https://github.com/killercup/cargo-edit#installation)
+# to install the `add` subcommand.
+#
+# Running `cargo add DEPENDENCY_NAME` will
+# add the latest version of a dependency to the list,
+# and it will keep the alphabetic ordering for you.
+
+[target.x86_64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+
+[build-dependencies]
+pyo3-build-config = { version = "0.22" }
+
+[dependencies]
+futures = { version = "0.3"}
+
+pyo3 = { version = "0.22" , features = ["abi3-py39"] }
+# pyo3 = { version = "0.22" }
+pyo3-build-config = { version = "0.22" }

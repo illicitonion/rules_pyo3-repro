@@ -1,0 +1,10 @@
+# If this isn't registered, and just the WORKSPACE is, some of the toolchains don't get registered properly.
+bazel_dep(name = "rules_python", version = "0.34.0")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+
+# If you want to specify a Python version, this is where to do so.
+# This is used in preference to anything in WORKSPACE.
+python.toolchain(
+    python_version = "3.12",
+)
