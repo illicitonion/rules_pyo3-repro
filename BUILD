@@ -10,9 +10,6 @@ rust_binary(
     ]),
     data = [
         "hello_world.py",
-        # Uncommenting this will make sure the toolchain is actually present for the link action and cause linking to succeed.
-        # This is a bug in rules_rust (or possibly how rules_pyo3 recommends people set up annotations).
-        #"@rules_pyo3//pyo3:current_pyo3_toolchain",
     ],
     aliases = aliases(),
     proc_macro_deps = all_crate_deps(

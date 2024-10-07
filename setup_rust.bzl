@@ -48,19 +48,11 @@ def rust_setup(lockfile):
             "pyo3-build-config": [
                 crate.annotation(
                     build_script_data = [
-                        "@rules_pyo3//pyo3:current_pyo3_toolchain",
+                        "@system_python_for_pyo3//:pyo3-config-file.txt",
                     ],
                     build_script_env = {
-                        "PYO3_CROSS": "$(PYO3_CROSS)",
-                        "PYO3_CROSS_LIB_DIR": "$(PYO3_CROSS_LIB_DIR)",
-                        "PYO3_CROSS_PYTHON_IMPLEMENTATION": "$(PYO3_CROSS_PYTHON_IMPLEMENTATION)",
-                        "PYO3_CROSS_PYTHON_VERSION": "$(PYO3_CROSS_PYTHON_VERSION)",
-                        "PYO3_NO_PYTHON": "$(PYO3_NO_PYTHON)",
-                        "PYO3_PYTHON": "$(PYO3_PYTHON)",
+                        "PYO3_CONFIG_FILE": "$(execpath @system_python_for_pyo3//:pyo3-config-file.txt)",
                     },
-                    build_script_toolchains = [
-                        "@rules_pyo3//pyo3:current_pyo3_toolchain",
-                    ],
                 ),
             ],
             "pyo3-ffi": [

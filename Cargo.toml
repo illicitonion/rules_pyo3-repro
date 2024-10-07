@@ -26,12 +26,9 @@ rustflags = [
   "-C", "link-arg=dynamic_lookup",
 ]
 
-[build-dependencies]
-pyo3-build-config = { version = "0.22" }
-
 [dependencies]
 futures = { version = "0.3"}
 
 pyo3 = { version = "0.22" , features = ["abi3-py39"] }
 # pyo3 = { version = "0.22" }
-pyo3-build-config = { version = "0.22" }
+pyo3-build-config = { version = "0.22", features = ["resolve-config"] }

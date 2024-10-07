@@ -49,6 +49,10 @@ python_register_toolchains(
     python_version = "3.9",
 )
 
+load("//repo_rules:probe_system_python_for_pyo3.bzl", "probe_system_python_for_pyo3")
+
+probe_system_python_for_pyo3(name = "system_python_for_pyo3")
+
 load("//:setup_rust.bzl", "rust_setup")
 
 rust_setup("//:Cargo.Bazel.lock")
