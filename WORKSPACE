@@ -18,8 +18,8 @@ http_archive(
 
 http_archive(
     name = "rules_rust",
-    integrity = "sha256-MZscNcESBO9WsdlKVJ9rnTUygTt3jwLXCe9oyDcDbPE=",
-    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.50.1/rules_rust-v0.50.1.tar.gz"],
+    integrity = "sha256-e46nr3+xbcSiMitKC3yeH6BUtNv59tBYTkO+f3zGqWs=",
+    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.54.0/rules_rust-v0.54.0.tar.gz"],
 )
 
 http_archive(
@@ -60,3 +60,16 @@ rust_setup("//:Cargo.Bazel.lock")
 load("@rust_crate_index//:defs.bzl", "crate_repositories")
 
 crate_repositories()
+
+http_archive(
+    name = "hermetic_cc_toolchain",
+    sha256 = "5c97ec998e982742ff32902517acad29a856006a6476ae28e62575fabba2a23c",
+    urls = [
+        "https://github.com/uber/hermetic_cc_toolchain/releases/download/v2.2.0/hermetic_cc_toolchain-v2.2.0.tar.gz",
+    ],
+)
+load("@hermetic_cc_toolchain//toolchain:defs.bzl", zig_toolchains = "toolchains")
+zig_toolchains()
+register_toolchains(
+    "@zig_sdk//toolchain:linux_amd64_gnu.2.31",
+)
